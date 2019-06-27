@@ -1,13 +1,13 @@
 package main
 
 import (
-	"financial/asset"
+	"financial/assets"
 	"testing"
 )
 
 func TestCurrencyCreation(t *testing.T) {
-	currencyType := asset.NewCurrencyType(1, "Real")
-	currency := asset.NewCurrency(23.45, &currencyType)
+	currencyType := assets.NewCurrencyType(1, "Real")
+	currency := assets.NewCurrency(23.45, &currencyType)
 	if value := currency.Float64(); value != 23.45 {
 		t.Errorf("expected 23.45 != received = %f", currency.Float64())
 	}
