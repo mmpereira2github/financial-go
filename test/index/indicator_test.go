@@ -2,24 +2,15 @@ package indicator
 
 import (
 	"financial/indicator"
+	boot "financial/init"
+	"os"
 	"testing"
 )
 
-func Test_PerfIndicatorType_GetById(t *testing.T) {
-	if ref, error := indicator.GetPerfIndicatorTypeDao().GetByID(1); error != nil {
-		t.Error(error)
-	} else {
-		t.Log(ref)
-	}
-}
-
-func Test_PerfIndicatorType_GetById_NotFound(t *testing.T) {
-	id := 500
-	if ref, error := indicator.GetPerfIndicatorTypeDao().GetByID(id); error != nil {
-		t.Log(error)
-	} else {
-		t.Errorf("%v should have not been found with id=%d\n", ref, id)
-	}
+func TestMain(m *testing.M) {
+	boot.RepoLoader()
+	code := m.Run()
+	os.Exit(code)
 }
 
 func Test_PerfIndicatorType_FindByName(t *testing.T) {
@@ -39,16 +30,8 @@ func Test_PerfIndicatorType_FindByName_NotFound(t *testing.T) {
 func Test_Preloaded_PerfIndicatorType(t *testing.T) {
 	if ref := indicator.GetPerfIndicatorTypeDao().FindByName("CDI"); ref == nil {
 		t.Errorf("It should have found CDI")
-	} else {
-		if ref.ID() != 2 {
-			t.Errorf("CDI should have ID=2 and not=%d", ref.ID())
-		}
 	}
 	if ref := indicator.GetPerfIndicatorTypeDao().FindByName("IPCA"); ref == nil {
 		t.Errorf("It should have found IPCA")
-	} else {
-		if ref.ID() != 1 {
-			t.Errorf("IPCA should have ID=1and not=%d", ref.ID())
-		}
 	}
 }

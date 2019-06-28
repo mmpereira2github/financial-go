@@ -16,8 +16,8 @@ type Activity interface {
 	Memo() string
 }
 
-// CostType means a type of cost
-type CostType interface {
+// CostCategory means a type of cost
+type CostCategory interface {
 	ID() int
 	Name() string
 	Description() string
@@ -25,9 +25,9 @@ type CostType interface {
 
 // Cost means some amount paid to buy/keep something
 type Cost interface {
-	CostType() CostType
+	CostType() CostCategory
 	CostTypeID() int
-	Amount() Currency
+	Amount() float64
 }
 
 // PurchaseActivity means an activity to purchase some units of an investment
@@ -35,8 +35,8 @@ type PurchaseActivity interface {
 	ID() int64
 	When() time.Time
 	Costs() []Cost
-	Price() Currency
-	Units() int
+	Price() float64
+	Units() float64
 }
 
 // SaleActivity means an activity to sale some units of an investment
@@ -53,5 +53,5 @@ type IncomeActivity interface {
 	ID() int64
 	When() time.Time
 	Costs() []Cost
-	Amount() Currency
+	Amount() float64
 }
