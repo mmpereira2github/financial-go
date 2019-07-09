@@ -1,0 +1,14 @@
+[
+    {
+        "id": 0,
+	    "name": "CDI",
+	    "valueType" : 0,
+	    "intervalType": 0
+    },
+    {
+        "id": 1,
+	    "name": "IPCA",
+	    "valueType" : 0,
+	    "intervalType": 0
+    }
+]

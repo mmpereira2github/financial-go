@@ -1,0 +1,5 @@
+{
+    "DaoConfig" : {
+        "indexDaoImplName" : "JSON"
+    }
+}

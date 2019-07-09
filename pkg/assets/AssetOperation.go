@@ -30,15 +30,6 @@ type Cost interface {
 	Amount() float64
 }
 
-// PurchaseActivity means an activity to purchase some units of an investment
-type PurchaseActivity interface {
-	ID() int64
-	When() time.Time
-	Costs() []Cost
-	Price() float64
-	Units() float64
-}
-
 // SaleActivity means an activity to sale some units of an investment
 type SaleActivity interface {
 	ID() int64
