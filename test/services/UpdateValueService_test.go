@@ -24,7 +24,7 @@ func TestUpdate892_40From201212Til201302UsingCDI(t *testing.T) {
 	if status.Code != 0 {
 		t.Error(status.Error)
 	} else {
-		expectedValue := 897.634818
+		expectedValue := 906.806752
 		if (output.UpdatedValue - expectedValue) > 0.0000009 {
 			t.Errorf("Expected updated value=%f, but received=%f", expectedValue, output.UpdatedValue)
 		}
