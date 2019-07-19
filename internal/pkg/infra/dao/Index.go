@@ -1,6 +1,6 @@
 package dao
 
-import "financial/internal/pkg/index"
+import "github.com/mmpereira2github/financial-go/internal/pkg/index"
 
 var indexDaoImpl *IndexDao
 

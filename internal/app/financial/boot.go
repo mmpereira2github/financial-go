@@ -1,10 +1,11 @@
 package financial
 
 import (
-	"financial/internal/pkg/config"
-	"financial/internal/pkg/infra/dao"
-	"financial/internal/pkg/infra/dao/json"
 	"log"
+
+	"github.com/mmpereira2github/financial-go/internal/pkg/config"
+	"github.com/mmpereira2github/financial-go/internal/pkg/infra/dao"
+	"github.com/mmpereira2github/financial-go/internal/pkg/infra/dao/json"
 )
 
 // Boot boots the app initializing its components

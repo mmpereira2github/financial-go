@@ -1,8 +1,9 @@
 package main
 
 import (
-	"financial/assets"
 	"testing"
+
+	"github.com/mmpereira2github/financial-go/pkg/assets"
 )
 
 func TestCurrencyCreation(t *testing.T) {

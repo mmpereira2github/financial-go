@@ -2,9 +2,6 @@ package gin
 
 import (
 	"encoding/json"
-	"financial/internal/app/financial"
-	"financial/internal/pkg/httpgin"
-	"financial/internal/pkg/services"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -13,6 +10,9 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mmpereira2github/financial-go/internal/app/financial"
+	"github.com/mmpereira2github/financial-go/internal/pkg/httpgin"
+	"github.com/mmpereira2github/financial-go/internal/pkg/services"
 	"github.com/stretchr/testify/assert"
 )
 
