@@ -1,7 +1,7 @@
 package config
 
 import (
-	"financial/pkg/config"
+	"financial/internal/pkg/config"
 	"testing"
 )
 
