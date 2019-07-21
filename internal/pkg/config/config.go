@@ -32,7 +32,7 @@ func init() {
 	Config.HTTPServer.Port = 8080
 
 	AppHome, AppHomeNotSet = os.LookupEnv("APP_HOME")
-	log.Printf("AppHome=%s\n", AppHome)
+	log.Printf("From environment AppHome=%s\n", AppHome)
 	log.Printf("AppHomeNotSet=%v", AppHomeNotSet)
 	if !AppHomeNotSet {
 		dir, err := os.Getwd()
@@ -41,9 +41,24 @@ func init() {
 		}
 		AppHome = dir
 	}
-	defaultConfigFile := AppHome + "/configs/financial.json"
-	if err := LoadConfig(defaultConfigFile); err != nil {
-		log.Printf("Default configuration file=[%s] not found", defaultConfigFile)
+	LoadConfigFromAppHome(AppHome)
+}
+
+func LoadConfigFromAppHome(appHome string) {
+	log.Printf("Given AppHome=%s\n", appHome)
+	if err := os.Chdir(appHome); err == nil {
+		dir, err := os.Getwd()
+		if err != nil {
+			panic(err)
+		}
+		AppHome = dir
+		log.Printf("Absolute AppHome=%s\n", AppHome)
+		defaultConfigFile := AppHome + "/configs/financial.json"
+		if err := LoadConfig(defaultConfigFile); err != nil {
+			log.Printf("Configuration file=[%s] not found", defaultConfigFile)
+		}
+	} else {
+		panic(err)
 	}
 }
 
@@ -53,6 +68,7 @@ func LoadConfig(pathFileName string) error {
 	if err != nil {
 		return err
 	}
+	log.Printf("Loading configuration from file=[%s]", pathFileName)
 	dec := json.NewDecoder(f)
 	if err := dec.Decode(&Config); err != nil {
 		f.Close()

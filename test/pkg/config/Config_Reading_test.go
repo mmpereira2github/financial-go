@@ -1,8 +1,9 @@
 package config
 
 import (
-	"financial/internal/pkg/config"
 	"testing"
+
+	"github.com/mmpereira2github/financial-go/internal/pkg/config"
 )
 
 /**

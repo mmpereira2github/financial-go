@@ -1,10 +1,11 @@
 package services
 
 import (
-	"financial/internal/pkg/index"
-	"financial/internal/pkg/infra/dao"
 	"log"
 	"time"
+
+	"github.com/mmpereira2github/financial-go/internal/pkg/index"
+	"github.com/mmpereira2github/financial-go/internal/pkg/infra/dao"
 )
 
 // UpdateValueServiceInput is the input for the UpdatePriceService service

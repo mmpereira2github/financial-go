@@ -2,8 +2,6 @@ package httpgin
 
 import (
 	"context"
-	"financial/internal/pkg/config"
-	"financial/internal/pkg/services"
 	"fmt"
 	"log"
 	"net/http"
@@ -14,6 +12,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin/binding"
+	"github.com/mmpereira2github/financial-go/internal/pkg/config"
+	"github.com/mmpereira2github/financial-go/internal/pkg/services"
 
 	"github.com/gin-gonic/gin"
 )

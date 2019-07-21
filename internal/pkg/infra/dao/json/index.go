@@ -2,11 +2,12 @@ package json
 
 import (
 	"encoding/json"
-	"financial/internal/pkg/config"
-	"financial/internal/pkg/index"
-	"financial/internal/pkg/infra/dao"
 	"log"
 	"os"
+
+	"github.com/mmpereira2github/financial-go/internal/pkg/config"
+	"github.com/mmpereira2github/financial-go/internal/pkg/index"
+	"github.com/mmpereira2github/financial-go/internal/pkg/infra/dao"
 )
 
 var indexMap map[string]*index.Index

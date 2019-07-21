@@ -2,9 +2,6 @@ package gin
 
 import (
 	"encoding/json"
-	"financial/internal/app/financial"
-	"financial/internal/pkg/httpgin"
-	"financial/internal/pkg/services"
 	"log"
 	"net/http"
 	"net/http/httptest"
@@ -13,13 +10,16 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mmpereira2github/financial-go/internal/app/financial"
+	"github.com/mmpereira2github/financial-go/internal/pkg/httpgin"
+	"github.com/mmpereira2github/financial-go/internal/pkg/services"
 	"github.com/stretchr/testify/assert"
 )
 
 var engine *gin.Engine
 
 func TestMain(m *testing.M) {
-	financial.Boot("../../..")
+	financial.Boot("../..")
 	engine = httpgin.Boot()
 
 	code := m.Run()

@@ -1,9 +1,9 @@
 package services_test
 
 import (
-	"financial/internal/app/financial"
-	"financial/internal/pkg/services"
-	"financial/pkg/infra"
+	"github.com/mmpereira2github/financial-go/internal/app/financial"
+	"github.com/mmpereira2github/financial-go/internal/pkg/infra"
+	"github.com/mmpereira2github/financial-go/internal/pkg/services"
 	"os"
 	"testing"
 	"time"
