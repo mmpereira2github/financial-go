@@ -1,3 +1,4 @@
 .gradle
 .gogradle/reports
 .gogradle/cache
+vendor
