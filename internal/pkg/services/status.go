@@ -1,9 +1,13 @@
 package services
 
+import "encoding/json"
+
 // StatusCode it is used to identify the error type
 type StatusCode int
 
 const (
+	// Success means success
+	Success StatusCode = 0
 	// ServiceNotFound means the service asked to run does not exist
 	ServiceNotFound StatusCode = -1
 	// InvalidInput means it is invalid for service execution
@@ -18,4 +22,15 @@ const (
 type Status struct {
 	Code  StatusCode
 	Error error
+}
+
+// MarshalJSON converts to JSON
+func (s *Status) MarshalJSON() ([]byte, error) {
+	return json.Marshal(&struct {
+		Code    StatusCode `json:"code"`
+		Message string     `json:"message"`
+	}{
+		Code:    s.Code,
+		Message: s.Error.Error(),
+	})
 }

@@ -23,7 +23,7 @@ type UpdateValueServiceOutput struct {
 
 func init() {
 	inputFactory := func() interface{} { return &UpdateValueServiceInput{} }
-	invoke := func(input interface{}) (Status, interface{}) {
+	invoke := func(input interface{}) (interface{}, *Status) {
 		if inputCasted, ok := input.(*UpdateValueServiceInput); ok {
 			return UpdateValue(*inputCasted)
 		}
@@ -37,7 +37,7 @@ func init() {
 }
 
 // UpdateValue update a given value collected at given date to target date using the given update index
-func UpdateValue(input UpdateValueServiceInput) (Status, UpdateValueServiceOutput) {
+func UpdateValue(input UpdateValueServiceInput) (UpdateValueServiceOutput, *Status) {
 	log.Println("input", input)
 	var err error
 	var timeInterator index.TimeIterator
@@ -57,9 +57,9 @@ func UpdateValue(input UpdateValueServiceInput) (Status, UpdateValueServiceOutpu
 				nextTime = timeInterator.Next()
 				endTimeReached = nextTime.After(input.TargetDate)
 			}
-			return Status{Code: 0}, UpdateValueServiceOutput{resultValue}
+			return UpdateValueServiceOutput{resultValue}, nil
 		}
-		return Status{Code: DateNotFound, Error: err}, UpdateValueServiceOutput{}
+		return UpdateValueServiceOutput{}, &Status{Code: DateNotFound, Error: err}
 	}
-	return Status{Code: IndexIDNotFound, Error: err}, UpdateValueServiceOutput{}
+	return UpdateValueServiceOutput{}, &Status{Code: IndexIDNotFound, Error: err}
 }

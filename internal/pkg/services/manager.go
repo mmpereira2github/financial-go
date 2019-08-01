@@ -1,16 +1,20 @@
 package services
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 // ServiceEntry means a service that can be executed through manager
 type ServiceEntry struct {
 	ID           string
 	InputFactory func() interface{}
-	Invoke       func(interface{}) (Status, interface{})
+	Invoke       func(interface{}) (interface{}, *Status)
 }
 
+// Manager supports the registry, unregistry and retrival of services
 var Manager interface {
-	GetServiceEntryById(id string) *ServiceEntry
+	GetServiceEntryByID(id string) (*ServiceEntry, *Status)
 	Register(entry *ServiceEntry) error
 }
 
@@ -24,8 +28,14 @@ func init() {
 	}
 }
 
-func (r *manager) GetServiceEntryById(id string) *ServiceEntry {
-	return r.registry[id]
+func (r *manager) GetServiceEntryByID(id string) (*ServiceEntry, *Status) {
+	if s := r.registry[id]; s != nil {
+		return s, nil
+	}
+	return nil, &Status{
+		Code:  ServiceNotFound,
+		Error: fmt.Errorf("Service %s not found", id),
+	}
 }
 
 func (r *manager) Register(entry *ServiceEntry) error {

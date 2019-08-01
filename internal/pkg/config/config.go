@@ -13,6 +13,10 @@ type FinancialConfig struct {
 		APIPath string
 		Port    int
 	}
+	Integration struct {
+		// TraceTriggeredByClientEnabled enables client to activate trace in the request
+		TraceTriggeredByClientEnabled bool
+	}
 	DaoConfig struct {
 		IndexDaoImplName string
 	}
@@ -30,6 +34,7 @@ var Config = FinancialConfig{}
 func init() {
 	Config.HTTPServer.APIPath = "/financial/api"
 	Config.HTTPServer.Port = 8080
+	Config.Integration.TraceTriggeredByClientEnabled = true
 
 	AppHome, AppHomeNotSet = os.LookupEnv("APP_HOME")
 	log.Printf("From environment AppHome=%s\n", AppHome)
